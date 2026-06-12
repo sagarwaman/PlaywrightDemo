@@ -3,7 +3,7 @@ import { text } from 'node:stream/consumers';
 import { chromium } from 'playwright'
 
 test('Dropdown test', async() => {
-    const browser:Browser = await chromium.launch({headless : false});
+    const browser:Browser = await chromium.launch({headless : true});
     const page:Page = await browser.newPage();
 
     await page.goto('https://proleed.academy/exercises/selenium/automation-practice-form-with-radio-button-check-boxes-and-drop-down.php');
