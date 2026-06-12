@@ -13,14 +13,31 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+   
     - name: Install dependencies
       run: npm ci
-    - name : Check playwright version
-      run : npx playwright --version
-    - name : Install chromium
-      run : npx playwright install 
+
+    # --- ADD THIS CACHING STEP ---
+    - name: Cache Playwright Binaries
+      id: playwright-cache
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-playwright-
+
+    - name: Check playwright version
+      run: npx playwright --version
+
+    # --- MODIFY THIS STEP TO ONLY RUN IF CACHE MISSES ---
+    - name: Install Playwright Browsers
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
+      run: npx playwright install --with-deps
+
     - name: Run Playwright tests
       run: npx playwright test
+
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
