@@ -1,0 +1,42 @@
+<testsuites id="" name="" tests="2" failures="1" skipped="0" errors="0" time="98.931783">
+<testsuite name="report.spec.ts" timestamp="2026-05-27T14:54:44.368Z" hostname="chromium" tests="2" failures="1" skipped="0" time="37.159" errors="0">
+<testcase name="validate register link" classname="report.spec.ts" time="19.711">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/report-validate-register-link-chromium/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  [chromium] › report.spec.ts:10:1 › validate register link ────────────────────────────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator:  locator('.ico-register')
+    Expected: visible
+    Received: undefined
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('.ico-register')
+        - waiting for" https://demowebshop.tricentis.com/login" navigation to finish...
+        - navigated to "https://demowebshop.tricentis.com/login"
+
+
+      12 | const icoRegisterElement = page.locator('.ico-register');
+      13 |
+    > 14 | await expect(icoRegisterElement).toBeVisible();
+         |                                  ^
+      15 |
+      16 | await expect(icoRegisterElement).toHaveText('Register');
+      17 |
+        at /home/sagar-waman/PlaywrightDemo/tests/report.spec.ts:14:34
+
+    Error Context: ../test-results/report-validate-register-link-chromium/error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="search item test" classname="report.spec.ts" time="17.448">
+</testcase>
+</testsuite>
+</testsuites>
