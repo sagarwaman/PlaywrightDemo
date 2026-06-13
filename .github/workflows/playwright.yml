@@ -32,6 +32,12 @@ jobs:
     - name: Run Playwright tests
       run: npx playwright test tests/dropdown.spec.ts 
 
+    - name : Install java
+      if: always()
+      run : |
+        apt-get update
+        apt-get install -y default-jre  
+
     - name : Generate Allure report
       run : npx allure generate allure-result --clean -o allure-report
       if: always()
