@@ -11,7 +11,7 @@ jobs:
     
     # --- ADD THIS: Run the whole job inside the Playwright container ---
     container:
-      image: mcr.microsoft.com/playwright:v1.59.1-jammy
+      image: mcr.microsoft.com/playwright:v1.60.0-jammy
 
     steps:
     - uses: actions/checkout@v4
